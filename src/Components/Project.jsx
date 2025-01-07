@@ -25,7 +25,7 @@ const Project = () => {
               loading="lazy"
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-50 opacity-0 backdrop-blur-lg transition-opacity duration-500 group-hover:opacity-100">
-              <h3 className="mb-3 text-3xl font-bold underline">{Project.name}</h3>
+              <h3 className="mb-3 text-2xl font-bold underline">{Project.name}</h3>
               <p className="mb-12 p-4 text-black">{Project.description}</p>
               <a
                 href={Project.githubLink}

@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa:wght@300..700&family=Dosis:wght@200..800&family=Patrick+Hand&family=Space+Grotesk:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,body{
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+
+}
+
+body{
+  font-family: "Space Grotesk",sans-serif;
+  background:#000;
+  color:rgb(230, 230, 230);
+}
+.bg-img{
+  background-image: url(../src/assets/bg-img5.png);
+}

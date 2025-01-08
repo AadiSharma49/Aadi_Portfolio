@@ -22,20 +22,18 @@ const About = () => {
 
   // Using IntersectionObserver to detect visibility of the About section
   useEffect(() => {
+    const aboutSection = document.getElementById("About");
+    if (!aboutSection) return;
+
     const handleIntersection = (entries) => {
       const [entry] = entries;
-      if (entry.isIntersecting) {
-        setIsVisible(true); // Trigger animation when About section is in view
-      } else {
-        setIsVisible(false); // Reset animation when About section is out of view
-      }
+      setIsVisible(entry.isIntersecting);
     };
 
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.1, // 10% of the section is visible
+      threshold: 0.2, // 20% of the section is visible
     });
 
-    const aboutSection = document.getElementById("About");
     observer.observe(aboutSection);
 
     // Cleanup observer on component unmount
@@ -45,9 +43,13 @@ const About = () => {
   }, []);
 
   return (
-    <section className="flex max-w-4xl mx-auto flex-col gap-10 md:gap-10" id="About">
+    <section
+      id="About"
+      className="flex flex-col gap-10 px-4 max-w-4xl mx-auto md:gap-12 md:px-8"
+    >
+      {/* Section Title */}
       <motion.h2
-        className="mb-12 mt-20 text-center text-4xl font-bold md:text-5xl lg:text-5xl"
+        className="mt-16 text-center text-4xl font-bold md:text-5xl lg:text-6xl"
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
         variants={textVariants}
@@ -55,11 +57,12 @@ const About = () => {
         ABOUT ME
       </motion.h2>
 
+      {/* About Content */}
       <div>
         {ABOUT.map((aboutText, index) => (
           <motion.p
             key={index}
-            className="mb-4 text-lg lg:text-3xl"
+            className="mb-6 text-lg leading-relaxed text-center md:text-left md:text-xl lg:text-2xl"
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
             variants={textVariants}

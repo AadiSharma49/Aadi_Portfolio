@@ -8,24 +8,22 @@ import ContactForm from './Components/ContactForm';
 import Footer from './Components/Footer';
 
 const App = () => {
-  return (
-    <div className="relative min-h-screen w-full overflow-x-hidden bg-gradient-to-b from-gray-900 to-gray-800">
-      <div className="fixed inset-0 bg-img bg-cover bg-center bg-fixed opacity-10"></div>
-      <div className="relative z-10 flex flex-col min-h-screen">
-        <Navbar />
-        <main className="flex-grow">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-20 py-8">
-            <Hero />
-            <About />
-            <Skill />
-            <Project />
-            <ContactForm />
-          </div>
-        </main>
-        <Footer />
-      </div>
-    </div>
-  )
+return (
+<div className="relative min-h-screen w-full overflow-x-hidden">
+<div className="fixed inset-0 bg-img bg-cover bg-center bg-fixed"></div>
+<div className="relative z-10 w-full">
+<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<Navbar/>
+<Hero/>
+<About/>
+<Skill/>
+<Project/>
+<ContactForm/>
+<Footer/>
+</div>
+</div>
+</div>
+)
 }
 
 export default App

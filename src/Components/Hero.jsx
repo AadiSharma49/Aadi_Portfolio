@@ -59,22 +59,6 @@ const Hero = () => {
     };
   }, []);
 
-  // Prevent horizontal scrolling on mobile devices
-  useEffect(() => {
-    const preventHorizontalScroll = () => {
-      const isMobile = /Mobi|Android/i.test(navigator.userAgent); // Detect mobile devices
-      if (isMobile) {
-        document.body.style.overflowX = "hidden"; // Disable horizontal scrolling
-      }
-    };
-
-    preventHorizontalScroll();
-
-    return () => {
-      document.body.style.overflowX = ""; // Reset when component unmounts
-    };
-  }, []);
-
   return (
     <>
       <section

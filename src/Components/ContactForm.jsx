@@ -142,9 +142,9 @@ const ContactForm = () => {
         </motion.div>
         <button
           type="submit"
-          className={mb-8 w-full rounded border border-stone-50/30 bg-stone-300 px-4 py-2 text-xl font-semibold text-stone-900 hover:bg-stone-400 ${
+          className={`mb-8 w-full rounded border border-stone-50/30 bg-stone-300 px-4 py-2 text-xl font-semibold text-stone-900 hover:bg-stone-400 ${
             isSending ? "cursor-not-allowed opacity-50" : ""
-          }}
+          }`}
           disabled={isSending}
         >
           <div className="flex items-center justify-center gap-3">

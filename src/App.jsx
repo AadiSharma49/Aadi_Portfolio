@@ -8,7 +8,7 @@ import ContactForm from './Components/ContactForm';
 import Footer from './Components/Footer';
 const App = () => {
   return (
-    <div className="relative h-full overflow-y-auto antialiased">
+    <div className="relative h-full overflow-y-auto antialiased overflow-x-hidden overscroll-x-none">
       <div className='fixed inset-0 bg-fixed bg-cover bg-center bg-img'></div>
       <div className='relative z-10 flex flex-col items-center p-4 space-y-8 container mx-auto'>
       <Navbar/>

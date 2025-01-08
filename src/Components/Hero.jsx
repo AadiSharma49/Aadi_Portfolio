@@ -57,19 +57,19 @@ const Hero = () => {
   }, []);
 
   return (
-    <>
-      <section
-        className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 md:flex-row md:px-12 lg:px-24"
-        id="Home"
-      >
+    <section
+      className="relative min-h-screen w-full overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12"
+      id="Home"
+    >
+      <div className="mx-auto flex h-full max-w-7xl flex-col items-center justify-center gap-8 py-12 md:min-h-screen md:flex-row md:gap-12 md:py-0">
         {/* Left Section */}
         <motion.div
-          className="w-full max-w-[600px] md:w-1/2"
+          className="w-full md:w-1/2"
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
           variants={textVariants}
         >
-          <h2 className="my-4 text-center text-3xl font-bold md:my-5 md:text-left md:text-5xl lg:text-[4rem] xl:text-[5rem]">
+          <h2 className="mb-4 text-center text-3xl font-bold md:mb-6 md:text-left md:text-5xl lg:text-[4rem] xl:text-[5rem]">
             {HERO.name}
           </h2>
           <p className="text-center text-xl tracking-tight md:text-left md:text-3xl lg:text-4xl">
@@ -93,7 +93,7 @@ const Hero = () => {
 
         {/* Right Section */}
         <motion.div
-          className="mt-8 w-full max-w-[500px] px-4 md:mt-0 md:w-1/2 md:px-8 lg:p-8"
+          className="w-full md:w-1/2"
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
           variants={imageVariants}
@@ -104,12 +104,12 @@ const Hero = () => {
               width={500}
               height={500}
               alt="Aaditya 3D Photo"
-              className="w-full max-w-[400px] rounded-3xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl md:max-w-[500px]"
+              className="w-full max-w-[280px] rounded-3xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl sm:max-w-[340px] md:max-w-[400px] lg:max-w-[500px]"
             />
           </div>
         </motion.div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

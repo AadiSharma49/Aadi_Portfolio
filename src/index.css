@@ -4,18 +4,41 @@
 @tailwind components;
 @tailwind utilities;
 
-html,body{
+html, body {
   height: 100%;
   margin: 0;
   scroll-behavior: smooth;
-
+  overflow-x: hidden; /* Prevent horizontal scrolling on all devices */
 }
 
-body{
-  font-family: "Space Grotesk",sans-serif;
-  background:#000;
-  color:rgb(230, 230, 230);
+body {
+  font-family: "Space Grotesk", sans-serif;
+  background: #000;
+  color: rgb(230, 230, 230);
 }
-.bg-img{
+
+/* Restrict horizontal scrolling for specific sections if needed */
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.bg-img {
   background-image: url(../src/assets/bg-img5.png);
+}
+
+/* Additional mobile-specific styles */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden; /* Ensure no horizontal scrolling on mobile */
+  }
 }

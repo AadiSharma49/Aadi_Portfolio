@@ -38,13 +38,13 @@ import { RiComputerLine } from "react-icons/ri"; // React Icons (Ri) module for 
 
 export const NAVIGATION_LINKS = [
 
-  { label: "Home", href: "#Home" },
-  { label: "About", href: "#About" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
+  { label: "Home", href: "https://aadi-dev-aadisharma49s-projects.vercel.app/#Home" },
+  { label: "About", href: "https://aadi-dev-aadisharma49s-projects.vercel.app/#About" },
+  { label: "Skills", href: "https://aadi-dev-aadisharma49s-projects.vercel.app/#skills" },
+  { label: "Projects", href: "https://aadi-dev-aadisharma49s-projects.vercel.app/#projects" },
   // { label: "Work Experience", href: "#work" },
   // { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "https://aadi-dev-aadisharma49s-projects.vercel.app/#contact" },
 ];
 
 export const HERO = {

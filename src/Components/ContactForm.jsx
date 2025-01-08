@@ -62,7 +62,6 @@ const ContactForm = () => {
   };
 
   const handleKeyDown = (e) => {
-    // Trigger form submission on Enter key press, except in textarea
     if (e.key === "Enter" && e.target.tagName !== "TEXTAREA" && !isSending) {
       handleSubmit(e);
     }
@@ -70,20 +69,20 @@ const ContactForm = () => {
 
   return (
     <motion.div
-      className="py-4 lg:w-3/4"
+      className="py-8 px-4 lg:w-2/3 mx-auto"
       id="contact"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false }}
       transition={{ duration: 1.2, ease: "easeOut" }}
     >
-      <h2 className="mb-12 mt-20 text-center text-4xl font-bold md:text-5xl lg:text-5xl">
+      <h2 className="mb-8 text-center text-3xl font-bold sm:text-4xl md:text-5xl">
         Let's Connect
       </h2>
-      <form onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
-        <div className="mb-4 flex space-x-4">
+      <form onSubmit={handleSubmit} onKeyDown={handleKeyDown} className="space-y-6">
+        <div className="space-y-4 md:space-y-0 md:flex md:gap-6">
           <motion.div
-            className="lg:w-1/2"
+            className="w-full md:w-1/2"
             initial={{ scale: 1 }}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
@@ -95,14 +94,12 @@ const ContactForm = () => {
               value={formData.name}
               placeholder="Name"
               onChange={handleChange}
-              className="mb-8 w-full appearance-none rounded-lg border border-stone-50/30 bg-transparent px-3 py-2 text-sm focus:border-stone-400 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none"
             />
-            {errors.name && (
-              <p className="block text-sm text-red-500">{errors.name}</p>
-            )}
+            {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
           </motion.div>
           <motion.div
-            className="lg:w-1/2"
+            className="w-full md:w-1/2"
             initial={{ scale: 1 }}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
@@ -114,15 +111,13 @@ const ContactForm = () => {
               value={formData.email}
               placeholder="Email"
               onChange={handleChange}
-              className="mb-8 w-full appearance-none rounded-lg border border-stone-50/30 bg-transparent px-3 py-2 text-sm focus:border-stone-400 focus:outline-none"
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none"
             />
-            {errors.email && (
-              <p className="block text-sm text-red-500">{errors.email}</p>
-            )}
+            {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
           </motion.div>
         </div>
         <motion.div
-          className="mb-4"
+          className="w-full"
           initial={{ scale: 1 }}
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
@@ -133,21 +128,19 @@ const ContactForm = () => {
             value={formData.message}
             placeholder="Message"
             onChange={handleChange}
-            className="mb-8 w-full appearance-none rounded-lg border border-stone-50/30 bg-transparent px-3 py-2 text-sm focus:border-stone-400 focus:outline-none"
-            rows="10"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none"
+            rows="6"
           />
-          {errors.message && (
-            <p className="block text-sm text-red-500">{errors.message}</p>
-          )}
+          {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message}</p>}
         </motion.div>
         <button
           type="submit"
-          className={`mb-8 w-full rounded border border-stone-50/30 bg-stone-300 px-4 py-2 text-xl font-semibold text-stone-900 hover:bg-stone-400 ${
+          className={`w-full rounded-lg bg-indigo-600 px-4 py-2 text-white text-lg font-medium hover:bg-indigo-700 ${
             isSending ? "cursor-not-allowed opacity-50" : ""
           }`}
           disabled={isSending}
         >
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-2">
             {isSending ? "Sending..." : "Send Message"}
             <FiSend />
           </div>
@@ -157,12 +150,12 @@ const ContactForm = () => {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="w-3/4 max-w-md p-6 bg-white rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold mb-4">Notification</h3>
+          <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
+            <h3 className="text-lg font-bold mb-4">Notification</h3>
             <p className="mb-6 text-gray-700">{modalMessage}</p>
             <button
               onClick={() => setIsModalOpen(false)}
-              className="px-4 py-2 text-white bg-indigo-600 rounded hover:bg-indigo-700"
+              className="w-full rounded-lg bg-indigo-600 px-4 py-2 text-white font-medium hover:bg-indigo-700"
             >
               Close
             </button>

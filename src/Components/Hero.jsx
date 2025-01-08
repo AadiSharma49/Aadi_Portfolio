@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false); // State to track if Hero section is in the viewport
 
+  // Define animation variants
   const textVariants = {
     hidden: { opacity: 0, y: 30, rotateX: -10 },
     visible: {
@@ -34,31 +35,36 @@ const Hero = () => {
     },
   };
 
+  // Using IntersectionObserver to detect visibility of the Hero section
   useEffect(() => {
     const handleIntersection = (entries) => {
       const [entry] = entries;
       if (entry.isIntersecting) {
-        setIsVisible(true);
+        setIsVisible(true); // Trigger animation when Hero section is in view
       } else {
-        setIsVisible(false);
+        setIsVisible(false); // Reset animation when Hero section is out of view
       }
     };
 
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.1,
+      threshold: 0.1, // 10% of the section is visible
     });
 
     const heroSection = document.getElementById("Home");
     observer.observe(heroSection);
 
+    // Cleanup observer on component unmount
     return () => {
       observer.unobserve(heroSection);
     };
   }, []);
 
   return (
-    <section className="min-h-screen w-full overflow-x-hidden" id="Home">
-      <div className="mx-auto flex h-full w-full max-w-6xl flex-col items-center justify-center gap-8 px-4 py-12 md:min-h-screen md:flex-row md:gap-12 md:px-6 lg:px-8">
+    <>
+      <section
+        className="flex min-h-screen flex-col items-center justify-center px-6 md:flex-row md:px-12 lg:px-24"
+        id="Home"
+      >
         {/* Left Section */}
         <motion.div
           className="w-full md:w-1/2"
@@ -66,18 +72,18 @@ const Hero = () => {
           animate={isVisible ? "visible" : "hidden"}
           variants={textVariants}
         >
-          <h2 className="mb-4 text-center text-3xl font-bold md:mb-6 md:text-left md:text-5xl lg:text-[4rem] xl:text-[5rem]">
+          <h2 className="my-5 text-center text-4xl font-bold md:text-left md:text-5xl lg:text-[4rem] xl:text-[5rem]">
             {HERO.name}
           </h2>
-          <p className="text-center text-xl tracking-tight md:text-left md:text-3xl lg:text-4xl">
+          <p className="text-center text-2xl tracking-tight md:text-left md:text-3xl lg:text-4xl">
             {HERO.greet}
           </p>
-          <p className="my-4 text-center text-base md:my-6 md:text-left md:text-xl lg:text-2xl">
+          <p className="my-4 text-center text-lg md:my-6 md:text-left md:text-xl lg:text-2xl">
             {HERO.description}
           </p>
           <div className="flex justify-center md:justify-start">
             <a
-              className="rounded-2xl bg-stone-100 px-5 py-2.5 text-base font-semibold text-stone-900 shadow-md transition-transform duration-300 hover:scale-110 hover:shadow-xl md:px-6 md:py-3 md:text-lg"
+              className="bg-stone-100 text-stone-900 px-6 py-3 text-lg font-semibold rounded-2xl shadow-md transition-transform duration-300 hover:scale-110 hover:shadow-xl"
               href={HERO.resumeLink}
               download
               rel="noreferrer"
@@ -90,7 +96,7 @@ const Hero = () => {
 
         {/* Right Section */}
         <motion.div
-          className="w-full px-4 md:w-1/2 md:px-0"
+          className="w-full mt-10 md:mt-0 md:w-1/2 lg:p-8"
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
           variants={imageVariants}
@@ -101,12 +107,12 @@ const Hero = () => {
               width={500}
               height={500}
               alt="Aaditya 3D Photo"
-              className="h-auto w-full max-w-[280px] rounded-3xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl sm:max-w-[340px] md:max-w-[400px] lg:max-w-[500px]"
+              className="rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105"
             />
           </div>
         </motion.div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

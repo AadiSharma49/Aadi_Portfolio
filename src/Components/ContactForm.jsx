@@ -1,4 +1,4 @@
-   import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { FiSend } from "react-icons/fi";
 import { motion } from "framer-motion";

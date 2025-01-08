@@ -4,11 +4,18 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 html, body {
   height: 100%;
   margin: 0;
   scroll-behavior: smooth;
-  overflow-x: hidden; /* Disable horizontal scrolling globally */
+  overflow-x: hidden; /* Disable horizontal scrolling */
 }
 
 body {
@@ -17,6 +24,12 @@ body {
   color: rgb(230, 230, 230);
 }
 
+/* Optional: Universal selector for ensuring no horizontal scrolling */
+body, html {
+  overflow-x: hidden !important; /* Apply this style globally */
+}
+
+/* Restrict horizontal scrolling for specific sections if needed */
 body::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -35,8 +48,7 @@ body::-webkit-scrollbar-thumb:hover {
   background-image: url(../src/assets/bg-img5.png);
 }
 
-/* Optional: Additional styles for mobile-specific adjustments */
+/* Optional: Additional mobile-specific styles */
 @media (max-width: 768px) {
-  /* This isn't needed unless you want specific styling on mobile */
-  /* overflow-x: hidden; already applied globally */
+  /* overflow-x: hidden already applied globally */
 }

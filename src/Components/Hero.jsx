@@ -57,11 +57,8 @@ const Hero = () => {
   }, []);
 
   return (
-    <section
-      className="relative min-h-screen w-full overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12"
-      id="Home"
-    >
-      <div className="mx-auto flex h-full max-w-7xl flex-col items-center justify-center gap-8 py-12 md:min-h-screen md:flex-row md:gap-12 md:py-0">
+    <section className="min-h-screen w-full overflow-x-hidden" id="Home">
+      <div className="mx-auto flex h-full w-full max-w-6xl flex-col items-center justify-center gap-8 px-4 py-12 md:min-h-screen md:flex-row md:gap-12 md:px-6 lg:px-8">
         {/* Left Section */}
         <motion.div
           className="w-full md:w-1/2"
@@ -93,7 +90,7 @@ const Hero = () => {
 
         {/* Right Section */}
         <motion.div
-          className="w-full md:w-1/2"
+          className="w-full px-4 md:w-1/2 md:px-0"
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
           variants={imageVariants}
@@ -104,7 +101,7 @@ const Hero = () => {
               width={500}
               height={500}
               alt="Aaditya 3D Photo"
-              className="w-full max-w-[280px] rounded-3xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl sm:max-w-[340px] md:max-w-[400px] lg:max-w-[500px]"
+              className="h-auto w-full max-w-[280px] rounded-3xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl sm:max-w-[340px] md:max-w-[400px] lg:max-w-[500px]"
             />
           </div>
         </motion.div>

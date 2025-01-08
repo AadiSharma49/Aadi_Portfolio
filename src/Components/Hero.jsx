@@ -59,40 +59,16 @@ const Hero = () => {
     };
   }, []);
 
-  // Prevent horizontal swipe gestures on mobile
+  // Prevent horizontal scrolling on mobile devices
   useEffect(() => {
-    const preventHorizontalSwipe = (e) => {
-      if (e.touches.length > 1) return; // Ignore multitouch gestures
-      const touch = e.touches[0];
-      const { clientX, clientY } = touch;
-
-      let startX = clientX;
-      let startY = clientY;
-
-      const onMove = (moveEvent) => {
-        const deltaX = moveEvent.touches[0].clientX - startX;
-        const deltaY = moveEvent.touches[0].clientY - startY;
-
-        if (Math.abs(deltaX) > Math.abs(deltaY)) {
-          // Prevent horizontal swipe
-          moveEvent.preventDefault();
-        }
-      };
-
-      window.addEventListener("touchmove", onMove, { passive: false });
-
-      const onEnd = () => {
-        window.removeEventListener("touchmove", onMove);
-        window.removeEventListener("touchend", onEnd);
-      };
-
-      window.addEventListener("touchend", onEnd);
+    const preventHorizontalScroll = () => {
+      document.body.style.overflowX = "hidden";
     };
 
-    window.addEventListener("touchstart", preventHorizontalSwipe);
+    preventHorizontalScroll();
 
     return () => {
-      window.removeEventListener("touchstart", preventHorizontalSwipe);
+      document.body.style.overflowX = ""; // Reset when component unmounts
     };
   }, []);
 

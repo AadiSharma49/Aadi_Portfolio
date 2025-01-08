@@ -13,8 +13,8 @@ return (
 <div className="fixed inset-0 bg-img bg-cover bg-center bg-fixed"></div>
 <div className="relative z-10 w-full">
 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <Hero/>
 <Navbar/>
-<Hero/>
 <About/>
 <Skill/>
 <Project/>

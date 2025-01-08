@@ -8,7 +8,7 @@ html, body {
   height: 100%;
   margin: 0;
   scroll-behavior: smooth;
-  overflow-x: hidden; /* Prevent horizontal scrolling on all devices */
+  overflow-x: hidden; /* Disable horizontal scrolling globally */
 }
 
 body {
@@ -17,7 +17,6 @@ body {
   color: rgb(230, 230, 230);
 }
 
-/* Restrict horizontal scrolling for specific sections if needed */
 body::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -36,9 +35,8 @@ body::-webkit-scrollbar-thumb:hover {
   background-image: url(../src/assets/bg-img5.png);
 }
 
-/* Additional mobile-specific styles */
+/* Optional: Additional styles for mobile-specific adjustments */
 @media (max-width: 768px) {
-  html, body {
-    overflow-x: hidden; /* Ensure no horizontal scrolling on mobile */
-  }
+  /* This isn't needed unless you want specific styling on mobile */
+  /* overflow-x: hidden; already applied globally */
 }

@@ -62,7 +62,10 @@ const Hero = () => {
   // Prevent horizontal scrolling on mobile devices
   useEffect(() => {
     const preventHorizontalScroll = () => {
-      document.body.style.overflowX = "hidden";
+      const isMobile = /Mobi|Android/i.test(navigator.userAgent); // Detect mobile devices
+      if (isMobile) {
+        document.body.style.overflowX = "hidden"; // Disable horizontal scrolling
+      }
     };
 
     preventHorizontalScroll();

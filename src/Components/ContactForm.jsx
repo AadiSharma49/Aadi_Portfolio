@@ -70,7 +70,7 @@ const ContactForm = () => {
 
   return (
     <motion.div
-      className="py-4 lg:w-3/4"
+      className="py-4 lg:w-5/7"
       id="contact"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}

@@ -53,7 +53,7 @@ export const HERO = {
   description:
     "I am a passionate Software Developer and creating beautiful and functional Web Applications. I like gaming, open-source contributions, and learning new things.",
     resumeLinkText: "Download Resume",
-  resumeLink: "https://drive.google.com/file/d/13wT4JBFxgS7TvOMNCSxJzq-Io_x7kjNK/view?usp=sharing",
+  resumeLink: "https://drive.google.com/file/d/1ZCP2lppuXzZ3Sha7kFH7IdJJVA5Iz_sk/view",
 };
 
 export const PROJECTS = [

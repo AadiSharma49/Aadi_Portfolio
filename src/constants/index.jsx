@@ -18,10 +18,13 @@ import { SiCss3 } from "react-icons/si";
 import { SiTailwindcss } from "react-icons/si";
 import { SiJavascript } from "react-icons/si";
 import { SiReact } from "react-icons/si";
+import { SiTypescript } from "react-icons/si";
+import { SiNextdotjs }from "react-icons/si" 
 import { SiPython } from "react-icons/si";
 import { SiCplusplus } from "react-icons/si"; // For C++
 import { SiC } from "react-icons/si"; // For C
 import { SiGodotengine } from "react-icons/si";
+import { SiUnrealengine } from 'react-icons/si';
 import { SiGit } from "react-icons/si";
 import { SiGithub } from "react-icons/si";
 import { SiLinux } from "react-icons/si";
@@ -53,7 +56,7 @@ export const HERO = {
   description:
     "I am a passionate Software Developer and creating beautiful and functional Web Applications. I like gaming, open-source contributions, and learning new things.",
     resumeLinkText: "Download Resume",
-  resumeLink: "https://drive.google.com/file/d/1ZCP2lppuXzZ3Sha7kFH7IdJJVA5Iz_sk/view?usp=sharing",
+  resumeLink: "https://drive.google.com/file/d/13wT4JBFxgS7TvOMNCSxJzq-Io_x7kjNK/view?usp=sharing",
 };
 
 export const PROJECTS = [
@@ -67,11 +70,11 @@ export const PROJECTS = [
   },
   {
     id: 2,
-    name: "AI Chat Bot Website",
+    name: "Web Terminal",
     description:
-      "This is a React.js web application that allows users to interact with an AI chatbot powered by OpenAI.It is designed to be responsive, ensuring a seamless user experience across different devices.",
+      "A fully responsive web-based terminal built using Next.js. It supports various commands like help, clear, echo, and more, providing an interactive CLI experience on the web.",
     image: projectImage2,
-    githubLink: "https://github.com/AadiSharma49/CHAT-AI",
+    githubLink: "https://github.com/AadiSharma49/Web-Terminal-",
   },
   {
     id: 3,
@@ -83,11 +86,11 @@ export const PROJECTS = [
   },
   {
     id: 4,
-    name: "Group Chat Application",
+    name: "Quotes-Site",
     description:
-      "This project is a real-time chat application that supports seamless group communication. Experience a sleek and responsive interface built for user-friendly interactions.",
+      " This is a responsive web application built with React that allows users to explore inspirational quotes, generate new ones, and manage their favorites. .",
     image: projectImage4,
-    githubLink: "https://github.com/AadiSharma49/Group-Chat-App",
+    githubLink: "https://github.com/AadiSharma49/Quotes-App",
   },
   {
     id: 5,
@@ -138,8 +141,18 @@ export const SKILLS = [
     name: "React",
     experience: "8+ Months",
   },
+  {
+    icon: <SiTypescript className="text-4xl text-[#007ACC] lg:text-5xl" />,
+    name: "TypeScript",
+    experience: "1+ Year",
+  },
+  {
+    icon: <SiNextdotjs className="text-4xl text-[#000000] lg:text-5xl" />,
+    name: "Next.js",
+    experience: "1+ Year",
+  },
   { 
-    icon: <SiPython className="text-4xl text-[#306998] lg:text-5xl" />, 
+    icon: <SiPython className="text-4xl text-[#3776AB] lg:text-5xl" />, 
     name: "Python", 
     experience: "1+ Years" 
   },
@@ -157,6 +170,11 @@ export const SKILLS = [
     icon: <SiGodotengine className="text-4xl text-[#478CBF] lg:text-5xl" />, 
     name: "Godot Engine", 
     experience: "6+ Months" 
+  },
+  { 
+    icon: <SiUnrealengine className="text-4xl text-[#000000] lg:text-5xl" />, 
+    name: "Unreal Engine", 
+    experience: "1+ Year" 
   },
   { 
     icon: <SiGit className="text-4xl text-[#F05033] lg:text-5xl" />, 

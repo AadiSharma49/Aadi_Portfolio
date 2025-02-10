@@ -88,7 +88,7 @@ export const PROJECTS = [
     id: 4,
     name: "Group Chat Application",
     description:
-      "Welcome to the Group Chat Application repository! This project is a real-time chat application that supports seamless group communication. Experience a sleek and responsive interface built for user-friendly interactions.",
+      "This project is a real-time chat application that supports seamless group communication. Experience a sleek and responsive interface built for user-friendly interactions.",
     image: projectImage4,
     githubLink: "https://github.com/AadiSharma49/Group-Chat-App",
   },

@@ -25,21 +25,20 @@ Hello! I'm **Aadi Sharma**, a passionate and creative frontend developer with a 
 - **Tech Stack**: Python, Bash, Linux
 - **Features**: Real-time data visualization, sleek modern UI.
 
-### 🤖 AI Chat Bot Website
-- **Description**: A dynamic website with an AI-powered chatbot that provides intelligent responses and enhances user engagement.
-- **Tech Stack**: React, Node.js, OpenAI API
-- **Features**: AI-driven conversations, seamless UI/UX.
+### 🖥️ Web-Based Terminal Application
+- **Description**: A fully functional web-based terminal that mimics a real command-line interface, designed for mobile and desktop users.
+- **Tech Stack**: Next.js, Tailwind CSS, GitHub
+- **Features**:  Responsive terminal UI, Command execution support.
 
 ### 🎮 Coin Chaser (Unreal Engine)
 - **Description**: A thrilling game where players collect coins while navigating challenging terrains and avoiding obstacles.
 - **Tech Stack**: Unreal Engine
 - **Features**: High-quality graphics, immersive gameplay.
 
-### 🔒 Clipboard Restriction Tool
-- **Description**: Software to restrict unauthorized clipboard actions and file copying from a designated root folder.
-- **Tech Stack**: Windows Hooks, System APIs
-- **Features**: Clipboard monitoring, file copy prevention, secure system-level operations.
-
+### 💬 Group Chat Application
+- **Description**: A real-time group chat application enabling seamless communication among users with modern messaging features.
+- **Tech Stack**: React.js, Node.js, Firebase
+- **Features**: Real-time messaging, user authentication, media sharing
 ---
 
 ## 🎯 Goals

@@ -18,10 +18,13 @@ import { SiCss3 } from "react-icons/si";
 import { SiTailwindcss } from "react-icons/si";
 import { SiJavascript } from "react-icons/si";
 import { SiReact } from "react-icons/si";
+import { SiTypescript } from "react-icons/si";
+import { SiNextdotjs }from "react-icons/si" 
 import { SiPython } from "react-icons/si";
 import { SiCplusplus } from "react-icons/si"; // For C++
 import { SiC } from "react-icons/si"; // For C
 import { SiGodotengine } from "react-icons/si";
+import { SiUnrealengine } from 'react-icons/si';
 import { SiGit } from "react-icons/si";
 import { SiGithub } from "react-icons/si";
 import { SiLinux } from "react-icons/si";
@@ -67,11 +70,11 @@ export const PROJECTS = [
   },
   {
     id: 2,
-    name: "AI Chat Bot Website",
+    name: "Web Terminal",
     description:
-      "This is a React.js web application that allows users to interact with an AI chatbot powered by OpenAI.It is designed to be responsive, ensuring a seamless user experience across different devices.",
+      "A fully responsive web-based terminal built using Next.js. It supports various commands like help, clear, echo, and more, providing an interactive CLI experience on the web.",
     image: projectImage2,
-    githubLink: "https://github.com/AadiSharma49/CHAT-AI",
+    githubLink: "https://github.com/AadiSharma49/Web-Terminal-",
   },
   {
     id: 3,
@@ -99,11 +102,11 @@ export const PROJECTS = [
   },
   {
     id: 6,
-    name: "Clipboard Restriction",
+    name: "Music Player",
     description:
-      "This Windows application monitors the clipboard for file copy-paste actions. It restricts any attempt to paste files outside a designated root folder, displaying a warning message if the operation is unauthorized.",
+      "A simple and stylish music player built with Python, Kivy, and Pygame that lets you play your favorite MP3 songs from a local folder.",
     image: projectImage6,
-    githubLink: "https://github.com/AadiSharma49/-Clipboard-Restriction",
+    githubLink: "https://github.com/AadiSharma49/Music-Player",
   },
 ];
 
@@ -138,8 +141,18 @@ export const SKILLS = [
     name: "React",
     experience: "8+ Months",
   },
+  {
+    icon: <SiTypescript className="text-4xl text-[#007ACC] lg:text-5xl" />,
+    name: "TypeScript",
+    experience: "1+ Year",
+  },
+  {
+    icon: <SiNextdotjs className="text-4xl text-[#000000] lg:text-5xl" />,
+    name: "Next.js",
+    experience: "1+ Year",
+  },
   { 
-    icon: <SiPython className="text-4xl text-[#306998] lg:text-5xl" />, 
+    icon: <SiPython className="text-4xl text-[#3776AB] lg:text-5xl" />, 
     name: "Python", 
     experience: "1+ Years" 
   },
@@ -157,6 +170,11 @@ export const SKILLS = [
     icon: <SiGodotengine className="text-4xl text-[#478CBF] lg:text-5xl" />, 
     name: "Godot Engine", 
     experience: "6+ Months" 
+  },
+  { 
+    icon: <SiUnrealengine className="text-4xl text-[#000000] lg:text-5xl" />, 
+    name: "Unreal Engine", 
+    experience: "1+ Year" 
   },
   { 
     icon: <SiGit className="text-4xl text-[#F05033] lg:text-5xl" />, 

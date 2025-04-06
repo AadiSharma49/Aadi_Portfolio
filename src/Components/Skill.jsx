@@ -18,7 +18,7 @@ const Skill = () => {
             transition={{ duration: 0.5, delay: index * 0.2 }}
           >
             <motion.div
-              className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:text-white hover:bg-indigo-600 hover:drop-shadow-2xl hover:transition-all hover:duration-500"
+              className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:text-white hover:bg-stone-200 hover:drop-shadow-2xl hover:transition-all hover:duration-500"
               whileHover={{
                 scale: 1.2,
                 rotate: 15,

@@ -86,11 +86,11 @@ export const PROJECTS = [
   },
   {
     id: 4,
-    name: "Quotes-Site",
+    name: "Group Chat Application",
     description:
-      " This is a responsive web application built with React that allows users to explore inspirational quotes, generate new ones, and manage their favorites. .",
+      "This project is a real-time chat application that supports seamless group communication. Experience a sleek and responsive interface built for user-friendly interactions.",
     image: projectImage4,
-    githubLink: "https://github.com/AadiSharma49/Quotes-App",
+    githubLink: "https://github.com/AadiSharma49/Group-Chat-App",
   },
   {
     id: 5,

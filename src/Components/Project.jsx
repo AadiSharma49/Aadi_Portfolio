@@ -21,7 +21,7 @@ const Project = () => {
             <img
               src={Project.image}
               alt={Project.name}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-50 opacity-0 backdrop-blur-lg transition-opacity duration-500 group-hover:opacity-100">

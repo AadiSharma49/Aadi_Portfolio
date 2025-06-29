@@ -13,7 +13,7 @@ import projectImage4 from "../assets/project4.jpeg";
 import projectImage5 from "../assets/project5.jpeg";
 import projectImage6 from "../assets/project6.jpeg";
 
-import { SiHtml5 } from "react-icons/si";
+import { SiFirebase, SiHtml5 } from "react-icons/si";
 import { SiCss3 } from "react-icons/si";
 import { SiTailwindcss } from "react-icons/si";
 import { SiJavascript } from "react-icons/si";
@@ -104,17 +104,13 @@ export const PROJECTS = [
     id: 6,
     name: "Music Player",
     description:
-      "A simple and stylish music player built with Python, Kivy, and Pygame that lets you play your favorite MP3 songs from a local folder.",
+    "A simple and stylish music player built with Python, Kivy, and Pygame that lets you play your favorite MP3 songs from a local folder.",
     image: projectImage6,
     githubLink: "https://github.com/AadiSharma49/Music-Player",
   },
 ];
 
-export const ABOUT = [
-  "I am a creative and detail-oriented software developer with hands-on experience in front-end development and game design. Proficient in technologies like HTML, CSS, JavaScript, React, and Python, I thrive on creating user-friendly interfaces and engaging digital experiences. My recent projects include developing responsive web applications and crafting games like Coin Chaser using the Godot engine.",
-"With a solid foundation in programming languages such as C++, C, and Python, I am also exploring Linux system-level projects while currently learning backend development and new technologies like Node.js, Next.js, MongoDB and Firebase.",
-"Currently pursuing my BCA degree, I balance academic learning with professional growth. Outside of work, I channel creativity through gaming, project building, and cricket.",
-"I thrive in collaborative environments that encourage growth, flexibility, and the pursuit of cutting-edge solutions, always aiming to merge technical prowess with imaginative problem-solving.",];
+export const ABOUT = ["I am a creative and detail-oriented software developer with experience in software development and game development. Proficient in technologies like HTML, CSS, JavaScript, React, and Python, I thrive on creating user-friendly interfaces and engaging digital experiences. My recent projects include developing responsive web applications, building a Python-based music player, and crafting games like Coin Chaser using the Godot engine. With a solid foundation in programming languages such as C++, C, and Python, I am also exploring Linux system-level projects while currently learning backend development and new technologies like Node.js, Next.js, MongoDB, and Firebase. I’m diving into DevOps practices and tools such as Docker, GitHub Actions, and CI/CD pipelines to enhance my development workflow and deployment strategies. Alongside my development journey, I am actively participating in Google Summer of Code (GSoC), contributing to open-source communities and sharpening my collaborative and problem-solving skills. Currently pursuing my BCA degree, I balance academic learning with professional growth. Outside of work, I channel creativity through gaming, project building, and cricket. I thrive in collaborative environments that encourage growth, flexibility, and the pursuit of cutting-edge solutions, always aiming to merge technical prowess with imaginative problem-solving.",];
 export const SKILLS = [
 { 
     icon: <SiHtml5 className="text-4xl text-[#E34F26] lg:text-5xl" />, 
@@ -190,6 +186,11 @@ export const SKILLS = [
     icon: <SiLinux className="text-4xl text-[#FCC624] lg:text-5xl" />, 
     name: "Linux", 
     experience: "7+ Months" 
+  },
+  {
+    icon: <SiFirebase className="text-4xl text-[#FFCA28] lg:text-5xl" />,
+    name: "Firebase",
+    experience: "1+ Year",
   }
 ];
 

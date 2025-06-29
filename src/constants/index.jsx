@@ -56,7 +56,7 @@ export const HERO = {
   description:
     "I am a passionate Software Developer and creating beautiful and functional Web Applications. I like gaming, open-source contributions, and learning new things.",
     resumeLinkText: "Download Resume",
-  resumeLink: "https://drive.google.com/file/d/13wT4JBFxgS7TvOMNCSxJzq-Io_x7kjNK/view?usp=sharing",
+  resumeLink: "https://drive.google.com/file/d/14ilvEywAP1fsHEKEFvBTbYeCYiwRaCL6/view?usp=sharing",
 };
 
 export const PROJECTS = [
@@ -86,11 +86,11 @@ export const PROJECTS = [
   },
   {
     id: 4,
-    name: "Quotes-Site",
+    name: "Group Chat Application",
     description:
-      " This is a responsive web application built with React that allows users to explore inspirational quotes, generate new ones, and manage their favorites. .",
+      "This project is a real-time chat application that supports seamless group communication. Experience a sleek and responsive interface built for user-friendly interactions.",
     image: projectImage4,
-    githubLink: "https://github.com/AadiSharma49/Quotes-App",
+    githubLink: "https://github.com/AadiSharma49/Group-Chat-App",
   },
   {
     id: 5,

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa:wght@300..700&family=Dosis:wght@200..800&family=Patrick+Hand&family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,14 +8,25 @@ html,body{
   height: 100%;
   margin: 0;
   scroll-behavior: smooth;
-
 }
 
 body{
-  font-family: "Space Grotesk",sans-serif;
-  background:#000;
-  color:rgb(230, 230, 230);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #060606;
+  color: rgb(230, 230, 230);
 }
+
+/* subtle grid background used very lightly */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .bg-img{
   background-image: url(../src/assets/bg-img5.png);
 }

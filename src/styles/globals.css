@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    background-color: #0a0a0a;
+    color: #e2e8f0;
+    @apply antialiased;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.04), transparent 18%),
+      radial-gradient(circle at 88% 10%, rgba(255, 255, 255, 0.03), transparent 16%),
+      linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: radial-gradient(circle at top center, rgba(255, 255, 255, 0.05), transparent 20%);
+    opacity: 0.12;
+    mix-blend-mode: screen;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.98' numOctaves='2' seed='42'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+  }
+}
+
+@layer components {
+  /* Custom scrollbar - premium design */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-700/60 rounded-full hover:bg-slate-600;
+    transition: background-color 0.2s ease-out;
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .transition-smooth-fast {
+    @apply transition-all duration-150 ease-out;
+  }
+
+  .transition-premium {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  /* Text utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-display {
+    font-family: 'Inter', system-ui;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .text-muted {
+    @apply text-slate-400;
+  }
+
+  /* Premium section heading */
+  .section-heading {
+    @apply text-3xl sm:text-4xl font-bold text-white;
+  }
+
+  .section-subheading {
+    @apply text-sm uppercase tracking-[0.3em] text-slate-500;
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-slate-900;
+  }
+
+  /* Premium card/block styling */
+  .card {
+    @apply relative rounded-3xl border border-slate-800/45 bg-slate-900/35 backdrop-blur-xl p-5 transition-premium hover:bg-slate-900/55 hover:border-slate-700/60 hover:shadow-[0_20px_60px_rgba(0,0,0,0.18)];
+  }
+
+  .card-interactive {
+    @apply cursor-none;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-slate-900/40 backdrop-blur-md border border-slate-800/30;
+  }
+
+  /* Premium border */
+  .border-premium {
+    @apply border border-slate-800/50;
+  }
+
+  /* Soft separator */
+  .separator {
+    @apply bg-gradient-to-r from-transparent via-slate-700/30 to-transparent h-[1px];
+  }
+
+  /* Subtle hover lift effect */
+  .hover-lift {
+    @apply transition-premium hover:shadow-lg hover:shadow-slate-900/30;
+  }
+
+  /* Workspace section styling */
+  .workspace-section {
+    @apply space-y-6;
+  }
+
+  /* Premium link styling */
+  a {
+    @apply relative text-slate-300 transition-premium hover:text-white;
+    text-decoration: none;
+  }
+
+  a::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-slate-400 to-slate-300 transition-premium;
+  }
+
+  a:hover::after {
+    @apply w-full;
+  }
+
+  /* Button styling */
+  button {
+    @apply transition-premium;
+  }
+
+  /* Input styling */
+  input, textarea, select {
+    @apply rounded border border-slate-800/50 bg-slate-900/50 px-3 py-2 text-slate-200 transition-premium placeholder:text-slate-500;
+    @apply focus:border-slate-700 focus:bg-slate-900/70 focus:outline-none focus:ring-1 focus:ring-slate-600;
+  }
+}
+
+@layer utilities {
+  .contain-layout {
+    @apply mx-auto max-w-5xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .contain-tight {
+    @apply mx-auto max-w-4xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .gradient-fade {
+    background: linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.3));
+  }
+
+  /* Premium workspace content positioning */
+  .workspace-content {
+    @apply relative z-10;
+  }
+
+  /* Spacing utilities */
+  .space-section {
+    @apply space-y-16 sm:space-y-20;
+  }
+
+  /* Responsive padding for sections */
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+}
+
+/* ============================================
+   CURSOR & INTERACTION SYSTEM
+   ============================================ */
+
+/* Hide default cursor on capable pointers */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+}
+
+/* Show default cursor for text selection and forms */
+input, textarea, select, [contenteditable] {
+  caret-color: #e0e0e0;
+}
+
+/* Interactive elements */
+a, button, [role="button"], .interactive {
+  cursor: none;
+}
+
+/* Text selection styling */
+::selection {
+  @apply bg-slate-700/40 text-slate-100;
+}
+
+::-moz-selection {
+  @apply bg-slate-700/40 text-slate-100;
+}
+
+/* ============================================
+   ANIMATION KEYFRAMES
+   ============================================ */
+
+@keyframes smooth-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* For drag line animation */
+@keyframes line-fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+:focus {
+  outline: none;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Ensure content is always above background layers */
+main, [role="main"] {
+  @apply relative z-10;
+}

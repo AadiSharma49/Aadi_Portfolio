@@ -1,11 +1,9 @@
 import WorkspaceLayout from "@/layouts/WorkspaceLayout";
 import Hero from "@/sections/Hero";
 import About from "@/sections/About";
-import Experience from "@/sections/Experience";
 import Projects from "@/sections/Projects";
-import OpenSource from "@/sections/OpenSource";
+import Experience from "@/sections/Experience";
 import Skills from "@/sections/Skills";
-import ContactForm from "@/Components/ContactForm";
 import Footer from "@/Components/Footer";
 
 export default function Page() {
@@ -13,11 +11,9 @@ export default function Page() {
     <WorkspaceLayout>
       <Hero />
       <About />
-      <Experience />
       <Projects />
-      <OpenSource />
+      <Experience />
       <Skills />
-      <ContactForm />
       <Footer />
     </WorkspaceLayout>
   );

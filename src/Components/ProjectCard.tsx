@@ -1,71 +1,119 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { useRef } from "react";
+import type { MouseEvent } from "react";
+import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
+import { FiArrowUpRight, FiGithub } from "react-icons/fi";
+import type { ProjectData } from "@/constants";
+import { usePrefersReducedMotion } from "@/hooks/useMediaQuery";
 
-type Repo = {
-  id: number;
-  name: string;
-  html_url: string;
-  description?: string | null;
-  homepage?: string | null;
-  stargazers_count?: number;
+const item = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-export default function ProjectCard({ repo, stack }: { repo: Repo; stack: string[] }) {
+export default function ProjectCard({
+  project,
+  index,
+  featured = false,
+}: {
+  project: ProjectData;
+  index: number;
+  featured?: boolean;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  const mouseX = useMotionValue(50);
+  const mouseY = useMotionValue(50);
+  const spotlightOpacity = useSpring(0, { stiffness: 200, damping: 24 });
+  const rotateX = useSpring(0, { stiffness: 220, damping: 22 });
+  const rotateY = useSpring(0, { stiffness: 220, damping: 22 });
+  const spotlightBackground = useMotionTemplate`radial-gradient(360px circle at ${mouseX}% ${mouseY}%, rgb(var(--color-ink) / 0.07), transparent 60%)`;
+
+  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const px = (event.clientX - rect.left) / rect.width;
+    const py = (event.clientY - rect.top) / rect.height;
+    mouseX.set(px * 100);
+    mouseY.set(py * 100);
+    spotlightOpacity.set(1);
+    if (!prefersReducedMotion) {
+      rotateY.set((px - 0.5) * 6);
+      rotateX.set(-(py - 0.5) * 6);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    spotlightOpacity.set(0);
+    rotateX.set(0);
+    rotateY.set(0);
+  };
+
   return (
     <motion.article
-      initial={{ opacity: 0, y: 8 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      whileHover={{ y: -6 }}
-      transition={{ type: "spring", stiffness: 260, damping: 22 }}
-      className="bg-[#0f0f0f] border border-[#1b1b1b] rounded-lg p-6 shadow-[0_10px_30px_rgba(0,0,0,0.6)] transition-transform transform-gpu hover:scale-[1.01]"
+      ref={cardRef}
+      variants={item}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      className="group relative flex h-full flex-col justify-between overflow-hidden rounded-lg border border-border bg-surface p-6 transition-colors duration-200 hover:border-border-hover"
     >
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0">
-          <h3 className="text-lg font-semibold text-white truncate">{repo.name}</h3>
-          {repo.description ? (
-            <p className="text-sm text-slate-300 mt-2 line-clamp-3">{repo.description}</p>
-          ) : (
-            <p className="text-sm text-slate-400 mt-2">Production-quality repository</p>
-          )}
-        </div>
-        <div className="text-xs text-slate-400">{repo.stargazers_count || 0}★</div>
-      </div>
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{ opacity: spotlightOpacity, background: spotlightBackground }}
+      />
 
-      <div className="flex flex-wrap gap-2 mt-4">
-        {stack.map((t) => (
-          <span
-            key={t}
-            className="text-xs text-slate-300 bg-slate-800/40 px-2 py-1 rounded-full border border-slate-700/30"
-          >
-            {t}
+      <div className="relative space-y-3">
+        <div className="flex items-center justify-between gap-3">
+          <span className="font-mono text-xs text-ink-faint">
+            {String(index + 1).padStart(2, "0")}
           </span>
-        ))}
+          {featured ? (
+            <span className="rounded-full border border-border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-ink-muted">
+              Featured
+            </span>
+          ) : null}
+        </div>
+
+        <h3 className="text-lg font-semibold text-ink">{project.title}</h3>
+        <p className="text-sm leading-relaxed text-ink-muted">{project.description}</p>
+
+        <div className="flex flex-wrap gap-2 pt-2">
+          {project.stack.map((tag) => (
+            <span
+              key={tag}
+              className="rounded border border-border px-2 py-1 font-mono text-[11px] uppercase tracking-wide text-ink-faint"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
 
-      <div className="flex gap-3 mt-5">
-        <a
-          href={repo.html_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-transparent border border-slate-800 text-slate-300 hover:bg-slate-800/40 transition"
-        >
-          <FaGithub className="w-4 h-4" />
-          GitHub
-        </a>
-
-        {repo.homepage ? (
+      <div className="relative mt-6 flex items-center gap-3">
+        {project.github ? (
           <a
-            href={repo.homepage}
+            href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-transparent border border-slate-800 text-slate-300 hover:bg-slate-800/40 transition"
+            className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-medium text-ink-muted transition-all duration-200 hover:-translate-y-0.5 hover:border-border-hover hover:text-ink"
           >
-            <FaExternalLinkAlt className="w-4 h-4" />
+            <FiGithub className="h-3.5 w-3.5" />
+            GitHub
+          </a>
+        ) : null}
+        {project.demo ? (
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-medium text-ink-muted transition-all duration-200 hover:-translate-y-0.5 hover:border-border-hover hover:text-ink"
+          >
             Live Demo
+            <FiArrowUpRight className="h-3.5 w-3.5" />
           </a>
         ) : null}
       </div>

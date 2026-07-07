@@ -1,124 +1,81 @@
 "use client";
 
-import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { hasWebGL } from "@/lib/webgl";
+import { usePrefersReducedMotion } from "@/hooks/useMediaQuery";
+import { useTheme } from "@/hooks/useTheme";
 
-const isTouchDevice = () => {
+const CursorScene = lazy(() => import("./CursorScene"));
+
+function isTouchDevice() {
   if (typeof navigator === "undefined") return false;
-  return (
-    navigator.maxTouchPoints > 0 ||
-    ((navigator as unknown as { msMaxTouchPoints?: number }).msMaxTouchPoints ?? 0) > 0
-  );
-};
-
-type Trail = {
-  x: number;
-  y: number;
-  id: number;
-  angle: number;
-};
+  return navigator.maxTouchPoints > 0;
+}
 
 export default function CustomCursor() {
   const [enabled, setEnabled] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const [trails, setTrails] = useState<Trail[]>([]);
+  const [isTabActive, setIsTabActive] = useState(true);
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const { theme } = useTheme();
 
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const springX = useSpring(cursorX, { stiffness: 500, damping: 32, mass: 0.4 });
-  const springY = useSpring(cursorY, { stiffness: 500, damping: 32, mass: 0.4 });
-
-  const trailId = useRef(0);
-  const cleanupTimers = useRef<Record<number, number>>({});
+  const x = useMotionValue(-100);
+  const y = useMotionValue(-100);
+  const dotSpringX = useSpring(x, { stiffness: 500, damping: 34, mass: 0.4 });
+  const dotSpringY = useSpring(y, { stiffness: 500, damping: 34, mass: 0.4 });
+  const ringSpringX = useSpring(x, { stiffness: 140, damping: 20, mass: 0.6 });
+  const ringSpringY = useSpring(y, { stiffness: 140, damping: 20, mass: 0.6 });
 
   useEffect(() => {
-    if (isTouchDevice() || window.innerWidth < 768) {
-      setEnabled(false);
-      return;
-    }
+    const canEnable = !isTouchDevice() && window.innerWidth >= 768 && hasWebGL() && !prefersReducedMotion;
+    setEnabled(canEnable);
+    document.body.classList.toggle("custom-cursor-active", canEnable);
+    return () => document.body.classList.remove("custom-cursor-active");
+  }, [prefersReducedMotion]);
 
-    setEnabled(true);
+  useEffect(() => {
+    if (!enabled) return;
 
-    const handleMouseMove = (event: MouseEvent) => {
-      cursorX.set(event.clientX);
-      cursorY.set(event.clientY);
-
-      const id = ++trailId.current;
-      const angle = Math.random() * 360;
-      setTrails((prev) => [...prev.slice(-10), { x: event.clientX, y: event.clientY, id, angle }]);
-
-      const timer = window.setTimeout(() => {
-        setTrails((prev) => prev.filter((trail) => trail.id !== id));
-        delete cleanupTimers.current[id];
-      }, 500);
-      cleanupTimers.current[id] = timer;
-
+    const handleMove = (event: MouseEvent) => {
+      x.set(event.clientX);
+      y.set(event.clientY);
       const target = event.target as HTMLElement | null;
-      const interactive = target?.closest("a, button, input, textarea, [role='button'], .interactive");
-      setIsHovering(Boolean(interactive));
+      setIsHovering(Boolean(target?.closest("a, button, input, textarea, [role='button'], .interactive")));
     };
+    const handleVisibility = () => setIsTabActive(!document.hidden);
 
-    const handleResize = () => {
-      setEnabled(!(isTouchDevice() || window.innerWidth < 768));
-    };
-
-    const handleMouseLeave = () => {
-      cursorX.set(-100);
-      cursorY.set(-100);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("mouseleave", handleMouseLeave);
-
+    window.addEventListener("mousemove", handleMove, { passive: true });
+    document.addEventListener("visibilitychange", handleVisibility);
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("mouseleave", handleMouseLeave);
-
-      const timers = { ...cleanupTimers.current };
-      Object.values(timers).forEach((timer) => window.clearTimeout(timer));
+      window.removeEventListener("mousemove", handleMove);
+      document.removeEventListener("visibilitychange", handleVisibility);
     };
-  }, [cursorX, cursorY]);
+  }, [enabled, x, y]);
 
   if (!enabled) return null;
 
+  const color = theme === "light" ? "#0a0a0a" : "#fafafa";
+
   return (
     <>
-      <AnimatePresence>
-        {trails.map(({ x, y, id, angle }) => (
-          <motion.div
-            key={id}
-            initial={{ opacity: 0.35, scale: 0.75 }}
-            animate={{ opacity: 0, scale: 1.1, rotate: angle }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="pointer-events-none fixed h-px w-12 rounded bg-white/40 blur-[1px]"
-            style={{ left: x - 24, top: y }}
-          />
-        ))}
-      </AnimatePresence>
-
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[9999] mix-blend-difference"
-        style={{
-          x: springX,
-          y: springY,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
+        aria-hidden="true"
+        className="pointer-events-none fixed left-0 top-0 z-[9998] h-10 w-10 rounded-full border border-ink/25"
+        style={{ x: ringSpringX, y: ringSpringY, translateX: "-50%", translateY: "-50%" }}
+        animate={{ scale: isHovering ? 1.6 : 1, opacity: isHovering ? 0.4 : 0.7 }}
+        transition={{ duration: 0.25 }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] h-11 w-11"
+        style={{ x: dotSpringX, y: dotSpringY, translateX: "-50%", translateY: "-50%" }}
       >
-        <motion.div
-          animate={{
-            scale: isHovering ? 1.25 : 1,
-            opacity: isHovering ? 1 : 0.92,
-          }}
-          transition={{ type: "spring", stiffness: 320, damping: 24 }}
-          className="relative flex h-8 w-8 items-center justify-center"
-        >
-          <span className="absolute h-8 w-8 rounded-full border border-white/80 shadow-[0_0_18px_rgba(255,255,255,0.28)]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.65)]" />
-        </motion.div>
+        {isTabActive ? (
+          <Suspense fallback={null}>
+            <CursorScene hovering={isHovering} color={color} />
+          </Suspense>
+        ) : null}
       </motion.div>
     </>
   );

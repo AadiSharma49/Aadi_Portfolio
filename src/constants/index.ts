@@ -1,54 +1,127 @@
-// Centralized data used across the workspace UI
-export const SOCIAL_MEDIA_LINKS = [
-  { href: "https://github.com/AadiSharma49", icon: "GitHub" },
-  { href: "https://www.linkedin.com/in/aaditya-sharma-978163250/", icon: "LinkedIn" },
+// Centralized data used across the portfolio
+
+export const PERSONAL = {
+  name: "Aaditya Sharma",
+  title: "Full-Stack & AI Developer",
+  tagline:
+    "I build and ship production AI systems independently — from RAG pipelines to desktop apps.",
+  email: "aadi198555@gmail.com",
+};
+
+export const SOCIAL_LINKS = [
+  { label: "GitHub", href: "https://github.com/AadiSharma49" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/aaditya-sharma-978163250/" },
+  { label: "Email", href: "mailto:aadi198555@gmail.com" },
 ];
 
 export const NAVIGATION_LINKS = [
   { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#open-source", label: "Open Source" },
+  { href: "#experience", label: "Experience" },
   { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];
-// Projects are sourced live from GitHub; placeholders removed.
-// The `Projects` section now fetches real repositories directly from the
-// GitHub API and displays curated entries. Do not add placeholder/demo
-// project entries here.
+
+export const ABOUT = {
+  summary:
+    "Full-stack and AI developer who builds and ships production systems independently. I created RelayOS, an AI decision memory platform for engineering teams, and Senti, a multimodal desktop auth system with voice, clap pattern, and PIN unlock. Comfortable across the full stack — Next.js, FastAPI, PostgreSQL, Electron, and LLM integrations.",
+  education: [
+    {
+      school: "Indian Institute of Technology, Mandi",
+      detail: "Professional Certification — Computer Software Engineering",
+      period: "Apr 2025 — Jun 2026",
+    },
+    {
+      school: "University of Rajasthan",
+      detail: "Bachelor of Computer Applications (BCA)",
+      period: "Aug 2022 — Jul 2025",
+    },
+  ],
+};
+
+export type ProjectData = {
+  title: string;
+  description: string;
+  stack: string[];
+  github?: string;
+  demo?: string;
+};
+
+export const PROJECTS: ProjectData[] = [
+  {
+    title: "RelayOS",
+    description:
+      "AI decision memory platform — captures decisions, action items & open questions from AI conversations (Claude, ChatGPT, Cursor) into a permanently searchable memory for engineering teams.",
+    stack: ["Next.js App Router", "Neon PostgreSQL", "Prisma", "Clerk", "Gemini API", "RAG (cosine similarity)", "Vercel"],
+    github: "https://github.com/AadiSharma49/RelayOs",
+    demo: "https://relay-os-three.vercel.app/",
+  },
+  {
+    title: "Senti",
+    description:
+      "Multimodal desktop auth system — Electron app with voice unlock, clap pattern recognition, and PIN fallback. FastAPI + PostgreSQL backend, React dashboard, Telegram bot for remote lock/unlock.",
+    stack: ["Electron", "FastAPI", "PostgreSQL", "React", "Telegram Bot API"],
+    github: "https://github.com/AadiSharma49/Senti",
+  },
+  {
+    title: "VibeMeet",
+    description:
+      "AI-powered real-time communication platform with AI transcription and meeting insights; sub-250ms latency, 5–10 concurrent users.",
+    stack: ["WebRTC", "React", "Node.js", "AI transcription"],
+    github: "https://github.com/AadiSharma49/VibeMeet",
+    demo: "https://vibe-meet-frontend.vercel.app/",
+  },
+  {
+    title: "DeepSearch AI Agent",
+    description:
+      "RAG pipeline with OpenRouter integration routing queries across 2–3 LLM models per request for improved relevance.",
+    stack: ["RAG", "OpenRouter", "Python"],
+    github: "https://github.com/AadiSharma49/DeepSearch-AI-Agent",
+    demo: "https://deep-search-ai-agent.vercel.app/",
+  },
+];
+
+export type ExperienceData = {
+  role: string;
+  org: string;
+  period: string;
+  description: string;
+};
+
+export const EXPERIENCE: ExperienceData[] = [
+  {
+    role: "Associate Software Engineer",
+    org: "Tectome.ai",
+    period: "Apr 2026 — Jun 2026",
+    description:
+      "Built end-to-end features across frontend, backend, and AI-driven systems in a fast-moving startup.",
+  },
+  {
+    role: "Open Source Developer",
+    org: "Aden Hive",
+    period: "Jan 2026 — Mar 2026",
+    description:
+      "Resolved backend issues, integrated webhook features, 3+ merged PRs on production codebases.",
+  },
+  {
+    role: "Contributor",
+    org: "Winter of Code Social",
+    period: "Nov 2025 — Jan 2026",
+    description:
+      "Architected centralized middleware handling 100% of API responses across 5+ endpoints.",
+  },
+  {
+    role: "Contributor",
+    org: "GirlScript Summer of Code 2025",
+    period: "Aug 2025 — Oct 2025",
+    description: "Merged 2+ PRs collaborating with 5+ contributors.",
+  },
+];
 
 export const SKILLS: Record<string, string[]> = {
-  Frontend: ["React", "Next.js", "TypeScript", "Tailwind"],
-  Backend: ["Node.js", "Express", "Python", "FastAPI"],
-  DevOps: ["Docker", "Kubernetes", "GitHub Actions", "CI/CD"],
-  Cloud: ["AWS", "GCP"],
-  Databases: ["Postgres", "MongoDB", "Redis"],
-  AI: ["PyTorch", "TensorFlow", "LangChain"],
+  Frontend: ["React.js", "Next.js (App Router)", "TypeScript", "Tailwind CSS", "Framer Motion", "shadcn/ui"],
+  Backend: ["Node.js", "Express.js", "FastAPI", "Prisma ORM", "REST APIs", "Firebase", "Supabase"],
+  "AI / ML": ["LLM Integration", "RAG Pipelines", "OpenRouter", "Prompt Engineering", "AI Agents"],
+  Languages: ["JavaScript", "TypeScript", "Python", "C++", "C"],
+  Tools: ["Electron", "Vercel", "Clerk Auth", "Git", "GitHub Actions"],
 };
-
-// Mapping of skill names to React icon components (using react-icons)
-// The value is a string that can be used with dynamic import via the `react-icons` package.
-// Example: "react-icons/si" for Simple Icons, "react-icons/fa" for FontAwesome.
-export const SKILL_ICONS: Record<string, { lib: string; name: string }> = {
-  React: { lib: "react-icons/si", name: "SiReact" },
-  "Next.js": { lib: "react-icons/si", name: "SiNextdotjs" },
-  TypeScript: { lib: "react-icons/si", name: "SiTypescript" },
-  Tailwind: { lib: "react-icons/si", name: "SiTailwindcss" },
-  "Node.js": { lib: "react-icons/si", name: "SiNodedotjs" },
-  Express: { lib: "react-icons/si", name: "SiExpress" },
-  Python: { lib: "react-icons/si", name: "SiPython" },
-  FastAPI: { lib: "react-icons/si", name: "SiFastapi" },
-  Docker: { lib: "react-icons/si", name: "SiDocker" },
-  Kubernetes: { lib: "react-icons/si", name: "SiKubernetes" },
-  "GitHub Actions": { lib: "react-icons/si", name: "SiGithubactions" },
-  "CI/CD": { lib: "react-icons/si", name: "SiCicd" },
-  AWS: { lib: "react-icons/si", name: "SiAmazonaws" },
-  GCP: { lib: "react-icons/si", name: "SiGooglecloud" },
-  Postgres: { lib: "react-icons/si", name: "SiPostgresql" },
-  MongoDB: { lib: "react-icons/si", name: "SiMongodb" },
-  Redis: { lib: "react-icons/si", name: "SiRedis" },
-  PyTorch: { lib: "react-icons/si", name: "SiPytorch" },
-  TensorFlow: { lib: "react-icons/si", name: "SiTensorflow" },
-  LangChain: { lib: "react-icons/si", name: "SiLangchain" },
-};
-

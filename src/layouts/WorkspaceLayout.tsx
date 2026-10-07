@@ -3,6 +3,7 @@
 import { ReactNode } from "react";
 import Navbar from "@/Components/Navbar";
 import CustomCursor from "@/Components/CustomCursor";
+import TouchHorse from "@/Components/TouchHorse";
 import { ThemeProvider } from "@/hooks/useTheme";
 
 type Props = {
@@ -14,6 +15,7 @@ export default function WorkspaceLayout({ children }: Props) {
     <ThemeProvider>
       <div className="min-h-screen bg-bg text-ink">
         <CustomCursor />
+        <TouchHorse />
         <Navbar />
         <main>{children}</main>
       </div>

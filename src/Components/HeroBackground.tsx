@@ -5,6 +5,8 @@ import { usePrefersReducedMotion, useIsMobile } from "@/hooks/useMediaQuery";
 import { useTheme } from "@/hooks/useTheme";
 import { hasWebGL } from "@/lib/webgl";
 
+import MobileTilt from "./MobileTilt";
+
 const HeroScene = lazy(() => import("./HeroScene"));
 
 function StaticFallback() {
@@ -53,6 +55,8 @@ export default function HeroBackground() {
             <HeroScene isActive={isTabActive} color={sceneColor} />
           </div>
         </Suspense>
+      ) : isMobile && !prefersReducedMotion ? (
+        <MobileTilt />
       ) : (
         <StaticFallback />
       )}

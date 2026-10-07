@@ -4,7 +4,7 @@ export const PERSONAL = {
   name: "Aaditya Sharma",
   title: "Full-Stack & AI Developer",
   tagline:
-    "I build and ship production AI systems independently — from RAG pipelines to desktop apps.",
+    "I build and ship production AI systems independently — from RAG pipelines and MCP servers to CI-integrated developer tools.",
   email: "aadi198555@gmail.com",
 };
 
@@ -15,6 +15,7 @@ export const SOCIAL_LINKS = [
 ];
 
 export const NAVIGATION_LINKS = [
+  { href: "#education", label: "Education" },
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
@@ -24,20 +25,26 @@ export const NAVIGATION_LINKS = [
 
 export const ABOUT = {
   summary:
-    "Full-stack and AI developer who builds and ships production systems independently. I created RelayOS, an AI decision memory platform for engineering teams, and Senti, a multimodal desktop auth system with voice, clap pattern, and PIN unlock. Comfortable across the full stack — Next.js, FastAPI, PostgreSQL, Electron, and LLM integrations.",
-  education: [
-    {
-      school: "Indian Institute of Technology, Mandi",
-      detail: "Professional Certification — Computer Software Engineering",
-      period: "Apr 2025 — Jun 2026",
-    },
-    {
-      school: "University of Rajasthan",
-      detail: "Bachelor of Computer Applications (BCA)",
-      period: "Aug 2022 — Jul 2025",
-    },
-  ],
+    "Full-stack and AI engineer who ships and maintains production systems independently. Built RelayOS, an AI decision memory platform with a hand-written MCP server and RAG-based conflict detection, and Preflight, a dependency-upgrade risk scanner using AST parsing with a CI/CD integration. Works across Next.js, TypeScript, FastAPI, PostgreSQL, and LLM integrations. Maintains 50+ GitHub repositories with merged PRs on production codebases.",
 };
+
+export const EDUCATION = [
+  {
+    school: "Manipal University Jaipur",
+    detail: "Master of Computer Applications (MCA)",
+    period: "Jul 2026 — Present",
+  },
+  {
+    school: "University of Rajasthan",
+    detail: "Bachelor of Computer Applications (BCA)",
+    period: "Aug 2022 — Jul 2025",
+  },
+  {
+    school: "Indian Institute of Technology, Mandi",
+    detail: "Professional Certification",
+    period: "Apr 2025 — Jun 2026",
+  },
+];
 
 export type ProjectData = {
   title: string;
@@ -51,23 +58,24 @@ export const PROJECTS: ProjectData[] = [
   {
     title: "RelayOS",
     description:
-      "AI decision memory platform — captures decisions, action items & open questions from AI conversations (Claude, ChatGPT, Cursor) into a permanently searchable memory for engineering teams.",
-    stack: ["Next.js App Router", "Neon PostgreSQL", "Prisma", "Clerk", "Gemini API", "RAG (cosine similarity)", "Vercel"],
+      "AI decision memory platform. A RAG-based conflict detection system flags contradicting decisions (pgvector search to shortlist, LLM judge to confirm), and a hand-written MCP server lets AI clients query stored decisions directly.",
+    stack: ["Next.js", "PostgreSQL (pgvector)", "Prisma", "Clerk", "Gemini API", "MCP"],
     github: "https://github.com/AadiSharma49/RelayOs",
     demo: "https://relay-os-three.vercel.app/",
   },
   {
-    title: "Senti",
+    title: "Preflight",
     description:
-      "Multimodal desktop auth system — Electron app with voice unlock, clap pattern recognition, and PIN fallback. FastAPI + PostgreSQL backend, React dashboard, Telegram bot for remote lock/unlock.",
-    stack: ["Electron", "FastAPI", "PostgreSQL", "React", "Telegram Bot API"],
-    github: "https://github.com/AadiSharma49/Senti",
+      "Dependency upgrade risk scanner. A CLI that uses Babel AST parsing to flag exactly which files will break before an upgrade, plus a GitHub Actions integration that comments risk on PRs and fails CI on breaking changes. 87 tests, published to npm.",
+    stack: ["Node.js", "TypeScript", "Babel AST", "GitHub Actions", "npm"],
+    github: "https://github.com/AadiSharma49/preflight",
+    demo: "https://preflight-umber.vercel.app/",
   },
   {
     title: "VibeMeet",
     description:
-      "AI-powered real-time communication platform with AI transcription and meeting insights; sub-250ms latency, 5–10 concurrent users.",
-    stack: ["WebRTC", "React", "Node.js", "AI transcription"],
+      "AI-powered real-time communication platform with transcription and channel insights using the OpenAI API; sub-250ms latency, 5–10 concurrent users.",
+    stack: ["React", "Node.js", "Express", "Stream Chat", "WebSockets", "OpenAI API"],
     github: "https://github.com/AadiSharma49/VibeMeet",
     demo: "https://vibe-meet-frontend.vercel.app/",
   },
@@ -90,38 +98,33 @@ export type ExperienceData = {
 
 export const EXPERIENCE: ExperienceData[] = [
   {
-    role: "Associate Software Engineer",
-    org: "Tectome.ai",
+    role: "Software Engineer Intern",
+    org: "Nandigo Technologies Pvt. Ltd.",
+    period: "Aug 2026 — Oct 2026",
+    description:
+      "Built and debugged core flows (trip planning, itineraries, saved trips, sharing, auth) for an AI-powered travel platform. Integrated the Calendly API and built backend services and REST APIs, resolving production bugs across the stack.",
+  },
+  {
+    role: "Software Engineer Intern",
+    org: "Axonari",
     period: "Apr 2026 — Jun 2026",
     description:
-      "Built end-to-end features across frontend, backend, and AI-driven systems in a fast-moving startup.",
+      "Built end-to-end full-stack features across frontend, backend, and AI-integrated systems in a fast-paced startup, integrating AI APIs into production-ready apps with modern JavaScript and TypeScript frameworks.",
   },
   {
     role: "Open Source Developer",
     org: "Aden Hive",
     period: "Jan 2026 — Mar 2026",
     description:
-      "Resolved backend issues, integrated webhook features, 3+ merged PRs on production codebases.",
-  },
-  {
-    role: "Contributor",
-    org: "Winter of Code Social",
-    period: "Nov 2025 — Jan 2026",
-    description:
-      "Architected centralized middleware handling 100% of API responses across 5+ endpoints.",
-  },
-  {
-    role: "Contributor",
-    org: "GirlScript Summer of Code 2025",
-    period: "Aug 2025 — Oct 2025",
-    description: "Merged 2+ PRs collaborating with 5+ contributors.",
+      "Merged 8+ pull requests across production codebases, resolving backend issues, integrating webhook-based features, and standardizing error handling across 5+ API endpoints. Architected centralized middleware handling 100% of API responses.",
   },
 ];
 
 export const SKILLS: Record<string, string[]> = {
-  Frontend: ["React.js", "Next.js (App Router)", "TypeScript", "Tailwind CSS", "Framer Motion", "shadcn/ui"],
+  "Frontend & UI": ["React.js", "Next.js (App Router)", "TypeScript", "Tailwind CSS", "Framer Motion", "shadcn/ui"],
   Backend: ["Node.js", "Express.js", "FastAPI", "Prisma ORM", "REST APIs", "Firebase", "Supabase"],
-  "AI / ML": ["LLM Integration", "RAG Pipelines", "OpenRouter", "Prompt Engineering", "AI Agents"],
-  Languages: ["JavaScript", "TypeScript", "Python", "C++", "C"],
-  Tools: ["Electron", "Vercel", "Clerk Auth", "Git", "GitHub Actions"],
+  "Programming Languages": ["JavaScript", "TypeScript", "Python", "C++", "C"],
+  "AI / ML": ["LLM Integration", "RAG Pipelines", "Vector Search (pgvector)", "Model Context Protocol (MCP)", "LLM Evaluation", "Prompt Engineering"],
+  "APIs & Platforms": ["Gemini API", "OpenRouter", "Clerk Auth"],
+  Tools: ["Vercel", "Git", "GitHub Actions", "Jira"],
 };

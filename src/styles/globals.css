@@ -81,6 +81,12 @@
   @apply bg-ink/20 text-ink;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

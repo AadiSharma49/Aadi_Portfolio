@@ -1,5 +1,6 @@
 import WorkspaceLayout from "@/layouts/WorkspaceLayout";
 import Hero from "@/sections/Hero";
+import Education from "@/sections/Education";
 import About from "@/sections/About";
 import Projects from "@/sections/Projects";
 import Experience from "@/sections/Experience";
@@ -10,6 +11,7 @@ export default function Page() {
   return (
     <WorkspaceLayout>
       <Hero />
+      <Education />
       <About />
       <Projects />
       <Experience />

@@ -34,15 +34,6 @@ export default function About() {
           {ABOUT.summary}
         </motion.p>
 
-        <motion.div variants={item} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {ABOUT.education.map((edu) => (
-            <div key={edu.school} className="rounded-lg border border-border p-5">
-              <p className="text-sm font-semibold text-ink">{edu.school}</p>
-              <p className="mt-1 text-sm text-ink-muted">{edu.detail}</p>
-              <p className="mt-3 font-mono text-xs text-ink-faint">{edu.period}</p>
-            </div>
-          ))}
-        </motion.div>
       </motion.div>
     </section>
   );
